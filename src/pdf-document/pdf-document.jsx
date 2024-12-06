@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
 const PDFDocument = ({ orientation = "landscape",structure,data }) => {
     const pages = [];
     const renderPages = () => {
+        //console.log(data);    
         //orientation="landscape"
         //orientation="portrait"
         try {
