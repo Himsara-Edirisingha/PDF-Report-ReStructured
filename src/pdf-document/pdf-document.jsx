@@ -36,23 +36,24 @@ const PDFDocument = ({ orientation = "landscape",structure,data }) => {
                     {structure && structure.map((component, index) => {
                         switch (component.type) {
                             case 'Pie':
-                                return <AddPieChart data={data[component.datasetname]} centerX={100} centerY={100} radius={100} left={component.left} />;
+                                return <AddPieChart key={index} data={data[component.datasetname]} centerX={100} centerY={100} radius={100} left={component.left} />;
                             case 'Bar':
-                                return <AddBarChart data={data[component.datasetname]} width={1000} height={200} left={component.left} />;
+                                return <AddBarChart key={index} data={data[component.datasetname]} width={1000} height={200} left={component.left} />;
                             case 'Image':
                                 return <AddImage key={index} src={data[component.datasetname]} width={component.width} height={component.height} left={component.left} top={component.top} isFixed={component.isfixed} />;
                             case 'Table':
-                                return <AddTable actualHeight={842} availableHeight={842} tableHeaders={data[component.headersetname]} tableData={data[component.datasetname]} left={component.left} />
+                                return <AddTable key={index} actualHeight={842} availableHeight={842} tableHeaders={data[component.headersetname]} tableData={data[component.datasetname]} left={component.left} />
+                            case 'Text':
+                                return <AddText key={index} content={"hello,-world,-javascript"}  lineseperator= {'-'}></AddText>;
                             default:
-                                return <AddText content={"Unsupported component type"}></AddText>;
+                                return <AddText key={index} content={"Unsupported component type"}></AddText>;
                         }
                     })}
-
                 </Page>
             );
 
         } catch (error) {
-
+           
         }
         return pages;
     };

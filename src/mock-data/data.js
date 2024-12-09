@@ -129,7 +129,7 @@ const getAllDataAsJson = () => {
         jsonData:getJsonData(),
         jsonData2: getJsonData2(),
         barChartData: getBarChartData(),
-        imagesrc:"http://localhost:3001/assets/user.png"
+        imagesrc:"http://localhost:3000/assets/user.png"
     };
 };
 
@@ -148,13 +148,12 @@ const getReportStructure = () => {
         {
             "id": "2",
             "left": 0,
-            "top": 288,
+            "top": 5,
             "type": 'Table',
             "height": 200,
             "datasetname":"tableData",
             "headersetname":"tableHeaders",
-            "width":300,
-            
+            "width":300,        
             "isfixed":false
         },
         {
@@ -186,8 +185,19 @@ const getReportStructure = () => {
             "width":300,
             "datasetname":"jsonData",
             "isfixed":false
+        },
+        {
+            "id": "5",
+            "left": 0,
+            "top": 0,
+            "type": 'Text',
+            "height": 200,
+            "width":300,
+            "datasetname":"jsonData",
+            "isfixed":false
         }
     ]
 };
 
 export { getBarChartData, getTableData, getTableHeaders, getJsonData2, getReportStructure, getAllDataAsJson };
+//letterSpacing:0
