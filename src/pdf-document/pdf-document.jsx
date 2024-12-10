@@ -1,11 +1,14 @@
 import React from 'react'
-import { Page, Document, StyleSheet } from '@react-pdf/renderer';
+import { Page, Document, StyleSheet, Font} from '@react-pdf/renderer';
 import AddBarChart from '../pdf-components/pdf-bar-chart';
 import AddPieChart from '../pdf-components/pdf-pie-chart';
 import AddImage from '../pdf-components/pdf-image';
 import AddTable from '../pdf-components/pdf-table';
 import AddText from '../pdf-components/pdf-text';
-//import { getJsonData2, getTableData, getTableHeaders } from '../mock-data/data';
+import regular from '../fonts/Roboto-Regular.ttf';
+import bold from '../fonts/Roboto-Bold.ttf';
+import italic from '../fonts/Roboto-Italic.ttf';
+import boldItalic from '../fonts/Roboto-BoldItalic.ttf';
 
 
 const styles = StyleSheet.create({
@@ -23,6 +26,16 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
 });
+
+Font.register({
+    family: 'Roboto',
+    fonts: [
+      { src: regular },
+      { src: bold, fontWeight: 'bold' },
+      { src: italic, fontStyle: 'italic' },
+      { src: boldItalic, fontWeight: 'bold', fontStyle: 'italic' },
+    ],
+  });
 
 const PDFDocument = ({ orientation = "landscape",structure,data }) => {
     const pages = [];
@@ -44,7 +57,7 @@ const PDFDocument = ({ orientation = "landscape",structure,data }) => {
                             case 'Table':
                                 return <AddTable key={index} actualHeight={842} availableHeight={842} tableHeaders={data[component.headersetname]} tableData={data[component.datasetname]} left={component.left} />
                             case 'Text':
-                                return <AddText key={index} content={"hello,-world,-javascript"}  lineseperator= {'-'}></AddText>;
+                                return (<AddText key={index} content={"hello,-world,-javascript"}  lineseperator= {'-'} ></AddText>)
                             default:
                                 return <AddText key={index} content={"Unsupported component type"}></AddText>;
                         }
