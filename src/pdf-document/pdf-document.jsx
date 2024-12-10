@@ -1,5 +1,5 @@
 import React from 'react'
-import { Page, Document, StyleSheet, Font} from '@react-pdf/renderer';
+import { Page, Document, StyleSheet, Font } from '@react-pdf/renderer';
 import AddBarChart from '../pdf-components/pdf-bar-chart';
 import AddPieChart from '../pdf-components/pdf-pie-chart';
 import AddImage from '../pdf-components/pdf-image';
@@ -30,14 +30,14 @@ const styles = StyleSheet.create({
 Font.register({
     family: 'Roboto',
     fonts: [
-      { src: regular },
-      { src: bold, fontWeight: 'bold' },
-      { src: italic, fontStyle: 'italic' },
-      { src: boldItalic, fontWeight: 'bold', fontStyle: 'italic' },
+        { src: regular },
+        { src: bold, fontWeight: 'bold' },
+        { src: italic, fontStyle: 'italic' },
+        { src: boldItalic, fontWeight: 'bold', fontStyle: 'italic' },
     ],
-  });
+});
 
-const PDFDocument = ({ orientation = "landscape",structure,data }) => {
+const PDFDocument = ({ orientation = "landscape", structure, data }) => {
     const pages = [];
     const renderPages = () => {
         //console.log(data);    
@@ -57,7 +57,7 @@ const PDFDocument = ({ orientation = "landscape",structure,data }) => {
                             case 'Table':
                                 return <AddTable key={index} actualHeight={842} availableHeight={842} tableHeaders={data[component.headersetname]} tableData={data[component.datasetname]} left={component.left} />
                             case 'Text':
-                                return (<AddText key={index} content={"hello,-world,-javascript"}  lineseperator= {'-'} ></AddText>)
+                                return (<AddText key={index} content={"hello,-world,-javascript"} lineseperator={'-'} ></AddText>)
                             default:
                                 return <AddText key={index} content={"Unsupported component type"}></AddText>;
                         }
@@ -66,7 +66,7 @@ const PDFDocument = ({ orientation = "landscape",structure,data }) => {
             );
 
         } catch (error) {
-           
+
         }
         return pages;
     };
